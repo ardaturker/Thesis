@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Copy Trading Onboarding Mockup</title>
+  <style>
+    /* --------------------
+       COLOR PALETTE
+       • Orange:  #FF6600
+       • Dark Blue: #004B99
+       • Light Blue: #007BFF
+       • White:   #FFFFFF
+       • Gray (for text/tooltips): #333333
+    -------------------- */
+
+    body {
+      margin: 0;
+      font-family: “Segoe UI”, Roboto, sans-serif;
+      background-color: #FFFFFF;
+      color: #333333;
+      line-height: 1.5;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      position: relative;
+      background-color: #FF6600;         /* bright orange background */
+      color: #FFFFFF;
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    .hero p {
+      margin: 16px 0 24px;
+      font-size: 1.25rem;
+    }
+    .hero .cta-button {
+      display: inline-block;
+      background-color: #004B99;         /* dark blue button */
+      color: #FFFFFF;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    .hero .cta-button:hover {
+      background-color: #007BFF;         /* light blue hover */
+    }
+
+    /* ===== Progressive Disclosure ===== */
+    .learn-more-container {
+      max-width: 600px;
+      margin: -40px auto 60px;           /* negative margin to overlap hero bottom */
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .learn-header {
+      padding: 16px 24px;
+      background-color: #004B99;         /* dark blue header */
+      color: #FFFFFF;
+      font-size: 1.125rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .learn-header span {
+      font-weight: 600;
+    }
+    .learn-header .arrow {
+      transition: transform 0.2s ease;
+    }
+    .learn-header.open .arrow {
+      transform: rotate(180deg);
+    }
+    .learn-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: #FFFFFF;
+    }
+    .learn-content ul {
+      margin: 0;
+      padding: 12px 24px 16px;
+      list-style: none;
+    }
+    .learn-content li {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .learn-content li:last-child {
+      margin-bottom: 0;
+    }
+    .learn-content li .tooltip {
+      color: #007BFF;
+      position: relative;
+      cursor: help;
+      text-decoration: underline dotted;
+    }
+    /* Tooltip styling */
+    .learn-content li .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    .tooltiptext {
+      visibility: hidden;
+      opacity: 0;
+      width: 200px;
+      background-color: #333333;
+      color: #FFFFFF;
+      text-align: center;
+      border-radius: 4px;
+      padding: 8px;
+      position: absolute;
+      z-index: 10;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.875rem;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+    .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: #333333 transparent transparent transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Copy Trading Made Simple</h1>
+    <p>Learn how to start copying trades as quick as 3 minutes.</p>
+    <a href="#learn-more" class="cta-button">Get Started</a>
+  </section>
+
+  <!-- PROGRESSIVE DISCLOSURE -->
+  <div id="learn-more" class="learn-more-container">
+    <div class="learn-header" onclick="toggleLearn(this)">
+      <span>Learn More</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="learn-content">
+      <ul>
+        <li>
+          Over <span class="tooltip">50 experts<span class="tooltiptext">Users who follow multiple experts see 12% higher retention.</span></span> available—view performance in real time.
+        </li>
+        <li>No minimum deposit.</li>
+        <li>Built-in risk controls.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function toggleLearn(headerDiv) {
+      const content = headerDiv.nextElementSibling;
+      const arrow = headerDiv.querySelector('.arrow');
+      headerDiv.classList.toggle('open');
+
+      if (headerDiv.classList.contains('open')) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        content.style.maxHeight = '0';
+      }
+    }
+  </script>
+
+</body>
+</html>
+
